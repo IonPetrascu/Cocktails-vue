@@ -1,0 +1,14 @@
+.select {
+.el-select__wrapper{
+  background-color: $background;
+  &.is-focused{
+  box-shadow: 0px 5px 10px $accent !important
+  }
+  &.el-input__inner{
+    color:$text;
+  }
+}
+}
+.el-select__selected-item {
+color:$text !important;
+}
