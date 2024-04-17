@@ -29,3 +29,37 @@ a{
   background-color: $accent;
 
 }
+.list {
+  width: 560px;
+  padding: 50px 0 80px;
+  text-align: left;
+
+&-item{
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 30px;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url('/src/assets/img/heart.svg') no-repeat 50% 50%;
+    height: 17px;
+    width: 17px;
+  }
+}
+}
+
+.instructions{
+  width: 516px;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: 0.1em;
+  color: $textMuted;
+  margin: 0 auto;
+  }

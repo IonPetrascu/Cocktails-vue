@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import AppLayout from '@/components/AppLayout.vue';
 import CocktailThumb from '@/components/CocktailThumb.vue'
 import { useRootStore } from '@/stores/root';
@@ -14,11 +13,15 @@ const {ingredients,cocktails,ingredient} = storeToRefs(rootStore)
 function getCocktails(){
   rootStore.getCocktails(rootStore.ingredient)
 }
+
+function removeIngredient(){
+  rootStore.setIngredient(null)
+}
 </script>
 
 
 <template>
-  <AppLayout imgUrl="/src/assets/img/bg-1.jpg">
+  <AppLayout :isBackButtonVisible="!!ingredient" :back-func="removeIngredient" imgUrl="/src/assets/img/bg-1.jpg">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails " class="info">
         <div class="title">Choose your drink</div>
@@ -51,7 +54,7 @@ function getCocktails(){
         <h2 class="title">COCKTAILS WITH {{ ingredient }} </h2>
         <div class="line"></div>
         <div class="cocktails">
-          <CocktailThumb v-for="cocktail in cocktails" :imgUrl="cocktail.strDrinkThumb" :id="cocktail.idDrink" :name="cocktail.strDrink" :key="cocktail.idDrink"/>
+          <CocktailThumb v-for="cocktail in cocktails" :imgUrl="cocktail.strDrinkThumb" :id="Number(cocktail.idDrink)" :name="cocktail.strDrink" :key="cocktail.idDrink"/>
         </div>
       </div>
     </div>
